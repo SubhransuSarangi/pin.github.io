@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot; rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .pin{
+           margin-right: 300px;
+           margin-left: 500px;
+           margin-top: 200px;
+        }
+    </style>
+    
+    <script>
+        var data = 7978;       
+        var chance=3;
+         
+        function login()
+        {
+           for(var i=0; i<3; i++)
+           {
+               var pin1 = document.getElementById("pincode").value;
+               if(data == pin1)
+               {
+                   document.write("login success");
+               }
+               else if(chance==0)
+               {
+                    alert("card is blocked");
+                    document.getElementById("pincode").disabled=true;
+                    document.querySelector("p").innerHTML="Refresh and try again".fontcolor('red');
+                    break;
+               }
+               else
+               {
+                    chance=chance-1;
+                    document.querySelector("p").innerHTML=`Invlid Pin ${chance} atempts left.`.fontcolor('red');
+                    return;
+               }
+           }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <div class="pin">
+        <label>Enter Your Pin</label>
+        <div>
+            <input type="number" id="pincode" >
+            <button class="btn btn-primary" onclick="login()">login</button>
+            <p></p>
+        </div>
+    </div>
+</body>
+</html>
